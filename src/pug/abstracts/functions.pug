@@ -1,0 +1,15 @@
+-
+	function normalizeURL(link) {
+		if (link.indexOf('://') !== -1) {
+			return link;
+		}
+		var result;
+		var domains = ["com", "ru", "io", "net"];
+		var ending = link.substring(link.lastIndexOf(".")+1);
+		domains.forEach(function(d) {
+			if (RegExp(d).test(ending) === true) {
+				result = 'http://' + link;
+			}
+		});
+		return result ? result : link;
+	}

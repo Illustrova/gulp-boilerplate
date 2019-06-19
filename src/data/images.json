@@ -1,0 +1,44 @@
+{
+	"images": {
+		"harley-davidson-1628265-unsplash_1240": {
+			"path": "'public\\assets\\img\\harley-davidson-1628265-unsplash_1240.jpeg'",
+			"width": 1240,
+			"height": 827
+		},
+		"harley-davidson-1628265-unsplash_1600": {
+			"path": "'public\\assets\\img\\harley-davidson-1628265-unsplash_1600.jpeg'",
+			"width": 1600,
+			"height": 1067
+		},
+		"harley-davidson-1628265-unsplash_320": {
+			"path": "'public\\assets\\img\\harley-davidson-1628265-unsplash_320.jpeg'",
+			"width": 320,
+			"height": 213
+		},
+		"harley-davidson-1628265-unsplash_450": {
+			"path": "'public\\assets\\img\\harley-davidson-1628265-unsplash_450.jpeg'",
+			"width": 450,
+			"height": 300
+		},
+		"harley-davidson-1628265-unsplash_540": {
+			"path": "'public\\assets\\img\\harley-davidson-1628265-unsplash_540.jpeg'",
+			"width": 540,
+			"height": 360
+		},
+		"harley-davidson-1628265-unsplash_720": {
+			"path": "'public\\assets\\img\\harley-davidson-1628265-unsplash_720.jpeg'",
+			"width": 720,
+			"height": 480
+		},
+		"harley-davidson-1628265-unsplash_990": {
+			"path": "'public\\assets\\img\\harley-davidson-1628265-unsplash_990.jpeg'",
+			"width": 990,
+			"height": 660
+		},
+		"harley-davidson-1628265-unsplash": {
+			"path": "'public\\assets\\img\\harley-davidson-1628265-unsplash.jpeg'",
+			"width": 1000,
+			"height": 667
+		}
+	}
+}
