@@ -21,9 +21,9 @@ const compileMarkup = () => {
 		}),
 	});
 	// Don't do anything if outputting dist files and using compilation task
-	if (env.dist) return gulp.src(src.docs).pipe(noop());
+	if (env.dist) return gulp.src(src.pages).pipe(noop());
 	return gulp
-		.src(src.docs)
+		.src(src.pages)
 		.pipe(plugins.plumber())
 		.pipe(plugins.pug(opts.pug))
 		.pipe(gulp.dest(dest.html));

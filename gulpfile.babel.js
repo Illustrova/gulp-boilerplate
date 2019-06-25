@@ -5,6 +5,7 @@ import { compileScripts, lintScripts, watchScripts } from './tasks/scripts';
 import { compileStyles, lintStyles, watchStyles } from './tasks/styles';
 import { compileMarkup, watchMarkup } from './tasks/markup';
 import { processImages, getImagesData, watchImages } from './tasks/images';
+import { createBlock, watchBlocks } from './tasks/createBlock';
 import {
 	generateFavicon,
 	injectFaviconMarkup,
@@ -36,6 +37,8 @@ export {
 	generateFavicon,
 	injectFaviconMarkup,
 	checkFaviconUpdate,
+	createBlock,
+	watchBlocks,
 };
 const env = getEnv();
 // NOTE:: wrapper functions necessary to get metadata for tasks as intended

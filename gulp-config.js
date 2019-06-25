@@ -7,6 +7,7 @@ const pkg = require('./package.json');
 const vars = require('./src/data/variables.json');
 const img = require('./src/data/images.json');
 
+const pugIncludeGlob = require('pug-include-glob');
 module.exports = {
 	pkg: {
 		name: pkg.name,
@@ -30,6 +31,7 @@ module.exports = {
 				vars: vars,
 				img: img,
 			},
+			plugins: [pugIncludeGlob()],
 		},
 		load: {
 			rename: {
@@ -134,16 +136,17 @@ module.exports = {
 	paths: {
 		base: env,
 		sources: {
-			docs: 'src/pug/*.pug',
-			markup: 'src/pug/**/*.pug',
+			pages: 'src/pages/*.pug',
+			markup: ['src/pages/*.pug', 'src/pug/**/*.pug', 'src/blocks/**/*.pug'],
 			overwatch: env + '**/*',
+			blocks: 'src/blocks/',
 			scripts: {
 				root: 'src/js/scripts.js',
-				all: 'src/js/**/*.js',
+				all: ['src/js/**/*.js', 'src/blocks/**/*.js'],
 			},
 			styles: {
 				root: 'src/stylus/style.styl',
-				all: 'src/stylus/**/*.styl',
+				all: ['src/stylus/**/*.styl', 'src/blocks/**/*.styl'],
 			},
 			images: 'src/assets/img/**/*.!(svg|gif)',
 			data: {

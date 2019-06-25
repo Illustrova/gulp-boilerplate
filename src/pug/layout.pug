@@ -1,3 +1,7 @@
+include ../pug/abstracts/functions.pug
+include ../pug/abstracts/vars.pug
+include ../blocks/**/*
+
 html(lang="en-us")
 	head
 		meta(charset="utf-8")
@@ -7,12 +11,15 @@ html(lang="en-us")
 		meta(name="description", content= description)
 		link(rel="stylesheet", href=`css/${styleName}.css`)
 	body.bg--lilac.tx--white.tx--center
-		include header
+		+header
+			block header
 		block content
-		include footer
+		//- include footer
+		+footer
+			block footer
 		script(src=`js/${scriptName}.js`)
-		script.
-			(function(){
-				const sum = myScripts.sum(1, 2)
-				console.info('The sum of 1 and 2 is:', sum)
-			})()
+		//- script.
+		//- 	(function(){
+		//- 		const sum = myScripts.sum(1, 2)
+		//- 		console.info('The sum of 1 and 2 is:', sum)
+		//- 	})()

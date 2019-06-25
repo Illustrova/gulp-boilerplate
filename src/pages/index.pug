@@ -1,0 +1,18 @@
+extends ../pug/layout
+
+block header
+	h1= name
+		
+block content
+	
+	.content
+		//- +btn({text: "blue"})
+		h2 A simple gulp boilerplate that gets you up and running with popular tasks.
+		p Fork the repo and create your own.
+		+image({src: "assets/img/harley-davidson-1628265-unsplash.jpeg", alt: "image for a test", sizes: sizes100})(class="image--test")
+
+block footer
+		a(href="https://github.com/jh3y/gulp-boilerplate", target="_blank")= name
+		span  modified by 
+		a(href="https://github.com/illustrova/gulp-boilerplate", target="_blank") Illustrova
+		span= ` v${version}`

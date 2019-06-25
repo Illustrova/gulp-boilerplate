@@ -1,0 +1,58 @@
+mixin image(opts, mods)
+	//-	Parameters:
+	//-	opts {object} - Object with all customizable options 
+	//-	mods {string} - comma-separated list of modifiers
+	//-	Call: +image({}, 'some-mod')
+	-
+		// modifiers list
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + 'image--' + modsList[i].trim();
+			}
+		}
+
+
+	-
+		var src = opts.src.toLowerCase(); 
+		var resolutions = Object.values(locals.vars.breakpoints).reverse(); //TODO: better control of the order of srcset
+		// Split basename and extention
+		var srcPath = [];
+		srcPath.push(src.substring(0, src.lastIndexOf('.')), src.substring(src.lastIndexOf('.')));
+		
+		/** Set srcset **/
+		var srcset = [];
+		for (i = 0; i  <  resolutions.length; i++) {
+			srcset.push(srcPath.join("_" + resolutions[i]) + " " + resolutions[i] + "w");
+		}
+		srcset = srcset.join(", ");
+
+		/** Set placeholder src if lazyload is used (srcsetImages.lazyload = true) **/
+		var phdir = "img/placeholders";
+		var phsrc = phdir + src.substring(src.lastIndexOf("/"), src.lastIndexOf(".")) + ".svg";
+
+		/** Set image width and height, if needed (srcsetImages.imgattrs = true) **/
+		var imageWidth = null; //nulled attributes just won't be set
+		var imageHeight = null;
+		if (locals.vars.srcsetImages.imgattrs) {
+			// Get image width and height attributes from JSON
+			var imagesArr = Object.values(locals.img.images);
+			// Helper function to find an image path in array with attributes
+			var imageIndex = (function() {
+				for(var i = 0; i < imagesArr.length; i += 1) {
+					var element = imagesArr[i].path;
+					if ((element.indexOf(element)) !== -1) {
+						return i;
+					}
+				}
+			})(src)
+
+			imageWidth =  imagesArr[imageIndex].width;
+			imageHeight =  imagesArr[imageIndex].height;
+		}
+
+	if locals.vars.srcsetImages.lazyload
+		img(src=phsrc, alt=opts.alt, data-srcset=srcset, data-sizes=opts.sizes, data-src=src, width=imageWidth, height=imageHeight)&attributes(attributes)
+	else
+		img(src=src, alt=opts.alt, srcset=srcset, sizes=opts.sizes, width=imageWidth, height=imageHeight)&attributes(attributes)

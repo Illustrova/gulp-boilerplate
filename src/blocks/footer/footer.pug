@@ -1,0 +1,18 @@
+mixin footer(opts, mods)
+
+	//-	Parameters:
+	//-	opts {object} - Object with all customizable options 
+	//-	mods {string} - comma-separated list of modifiers
+	//-	Call: +footer({}, 'some-mod')
+	-
+		// modifiers list
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + 'footer--' + modsList[i].trim();
+			}
+		}
+
+	footer.footer(class=allMods)&attributes(attributes)
+		block

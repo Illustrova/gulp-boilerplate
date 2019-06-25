@@ -5,6 +5,8 @@ import { rollup } from 'rollup';
 import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
+import globImport from 'rollup-plugin-glob-import';
+import prettier from 'rollup-plugin-prettier';
 import pluginLoader from 'gulp-load-plugins';
 
 const opts = gConfig.pluginOpts;
@@ -22,7 +24,12 @@ const lintScripts = () => {
 lintScripts.description = `lint script source(${src.scripts.all}) using eslint`;
 
 const compileScripts = async function() {
-	const plugins = [resolve(), babel({ exclude: 'node_modules/**' })];
+	const plugins = [
+		resolve(),
+		babel({ exclude: 'node_modules/**', babelrc: false }),
+		globImport(),
+		prettier({ parser: 'babel' }),
+	];
 
 	if (env.mapped || env.deploy) plugins.push(uglify());
 
@@ -41,6 +48,7 @@ const compileScripts = async function() {
 			if (warning.code === 'THIS_IS_UNDEFINED') {
 				return;
 			}
+			// eslint-disable-next-line no-console
 			console.warn(warning.message);
 		},
 	});

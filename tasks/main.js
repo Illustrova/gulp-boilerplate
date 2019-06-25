@@ -4,6 +4,7 @@ import { compileStyles, lintStyles, watchStyles } from './styles';
 import { compileMarkup, watchMarkup } from './markup';
 import { processImages, getImagesData, watchImages } from './images';
 import { generateFavicon, injectFaviconMarkup } from './favicon';
+import { watchBlocks } from './createBlock';
 
 const lint = gulp.parallel(lintStyles, lintScripts);
 lint.description = 'lint all source';
@@ -22,6 +23,7 @@ const watch = gulp.parallel(
 	watchStyles,
 	watchScripts,
 	watchImages,
+	watchBlocks,
 	injectFaviconMarkup
 );
 watch.description = 'watch for changes to all source';
